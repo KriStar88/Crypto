@@ -14,7 +14,6 @@ def update_c_label(event):
 def exchange_crypto():
     name_coin = coin_combobox.get()
     name_currency = currency_combobox.get()
-#    mb.showinfo("Проверка", name_coin)
     if name_coin and name_currency:
         try:
             response = requests.get(f"https://api.coingecko.com/api/v3/coins/markets?vs_currency={name_currency}")
@@ -33,13 +32,6 @@ def exchange_crypto():
 
     else:
         mb.showwarning("Внимание!", "Выберите название криптовалюты!")
-
-
-window = Tk()
-window.title("Курсы обмена криптовалют")
-window.geometry("360x250")
-
-Label(text="Выберите название криптовалюты").pack(padx=10, pady=10)
 
 coins = [
     "Bitcoin",
@@ -69,8 +61,16 @@ currency = {
     'ars': "Аргентинский песо"
 }
 
+window = Tk()
+window.title("Курсы обмена криптовалют")
+window.geometry("360x250")
+
+Label(text="Выберите название криптовалюты").pack(padx=10, pady=10)
+
 coin_combobox = ttk.Combobox(values=coins)
 coin_combobox.pack(padx=10, pady=10)
+
+Label(text="Выберите код целевой валюты").pack(padx=10, pady=10)
 
 currency_combobox = ttk.Combobox(values=list(currency.keys()))
 currency_combobox.pack(padx=10, pady=10)
