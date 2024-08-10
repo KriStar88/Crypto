@@ -18,15 +18,15 @@ def exchange_crypto():
                 if name['name'] == name_coin:
                     exchange_coin = name["current_price"]
                     mb.showinfo("Курс обмена", f"Курс: {name_coin}:  {exchange_coin} USD")
+                    break
+            else:
+                mb.showerror("Ошибка", "Криптовалюта не найдена")
 
         except Exception as e:
             mb.showerror("Ошибка", f"Произошла ошибка: {e}.")
 
     else:
-        mb.showwarning("Внимание!", "Введите название криптовалюты!")
-
-
-
+        mb.showwarning("Внимание!", "Выберите название криптовалюты!")
 
 
 window = Tk()
@@ -51,7 +51,6 @@ coins = [
 ]
 combobox = ttk.Combobox(values=coins)
 combobox.pack(padx=10, pady=10)
-
 
 
 Button(text="Получить курс обмена к доллару", command=exchange_crypto).pack(padx=10, pady=10)
